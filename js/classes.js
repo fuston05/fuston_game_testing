@@ -2,6 +2,9 @@
 class gameObject{
     constructor(options){
 
+        //this.sequence= 0; //just a thought??
+        //this.location= 0; //just a thought?? maybe this should be in CharacterStats???
+
     }//end constructor
 
     // /////////// methods ////////////
@@ -26,7 +29,7 @@ class characterStats extends gameObject{
 class Character extends characterStats{
     constructor(options){
         super(options);
-        
+
         // race?
         // name?
         // class?
