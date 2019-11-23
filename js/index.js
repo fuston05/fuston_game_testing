@@ -1,23 +1,24 @@
-function rollDice(){
-    // 2 normal 6 sided die
-    const max= 7;
-    const min= 1;
+//main game file
 
-    //roll die 1
-    const die_1= Math.floor(Math.random() * (max - min))+ min;
+//get out outPut div
+let outPut= document.getElementById('outPut');
 
-    //roll die 2
-    const die_2= Math.floor(Math.random() * (max - min)) + min;
-
-    //add the die together
-    const dieTotal= die_1 + die_2;
+//test game tik
+// I think this is a 30fps counter? if you use 33.3 for setInterval? 
+//not that we need 30fps for our purposes, just messing around.
+//prob use 1500 for the setInterval in the text game just to delay actions so everythings not 
+// instant like a fight etc..
+let count=1;
+window.setInterval(() => {
+    outPut.innerHTML=count;
+    if( count== 30 ){
+        count= 1;
+        // console.log('30 frame');
+    }else{
+        count++;
+    }
     
-    return `<p>-Die_1: ${die_1}<br />-Die_2: ${die_2} <br /><br />Total Roll: ${dieTotal}</p>`;
+}, 1500);
 
-    //could make it to where we pass in the number of die to be rolled? Not sure if that could be a needed feature or not.
-}//end func
-
-let poop= document.getElementById("outPut");
-poop.innerHTML= rollDice();
-
+// out.innerHTML= rollDice();
 
