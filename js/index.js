@@ -12,12 +12,12 @@ function rollDice(){
     //add the die together
     const dieTotal= die_1 + die_2;
     
-    return `-Die_1: ${die_1},\n-Die_2: ${die_2} \n\nTotal Roll: ${dieTotal}`;
+    return `<p>-Die_1: ${die_1}<br />-Die_2: ${die_2} <br /><br />Total Roll: ${dieTotal}</p>`;
 
     //could make it to where we pass in the number of die to be rolled? Not sure if that could be a needed feature or not.
 }//end func
 
-// let poop= document.getElementById("outPut");
-// poop.textContent= rollDice();
+let poop= document.getElementById("outPut");
+poop.innerHTML= rollDice();
 
 
