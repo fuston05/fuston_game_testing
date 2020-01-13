@@ -29,6 +29,7 @@ class Item extends GameObject{
    constructor(options, magic={}, specialProps={}, inventory=[]){
       super(options);
       this.name= options.name,
+      this.owner= {},
       this.isEdible= options.isEdible;
       this.material= options.material,
       this.weight= options.weight,
@@ -37,10 +38,27 @@ class Item extends GameObject{
       this.nutrition= options.nutrition,
       this.color= options.color,
       this.inventory= inventory,
+      this.eatBleedEffect= options.eatBleedEffect,
       this.magicProperties= magic, //object
       this.specialProps= specialProps  //object
    }//end constructor
-   
+   bleedEffect(){
+      if(this.eatBleedEffect != {}){
+         let hp= this.owner.hp;
+         let bleedTimer= setInterval(() => {
+            
+               let dot= hp - (this.eatBleedEffect.damage * this.eatBleedEffect.time);
+
+               console.log('dot: ',dot);
+               if(this.owner.hp <= dot){
+                  clearInterval(bleedTimer);
+               }
+               this.owner.hp-= this.eatBleedEffect.damage;
+               console.log('Bleeding: ', this.owner.hp);
+
+         }, this.eatBleedEffect.time*100);
+      }
+   }
 }//end Items
 
 class Inventory extends GameObject{
@@ -84,7 +102,9 @@ class Character extends CharacterStats {
    // ///////// methods: ///////////
    addToInventory(item){
       this.inventory.push(item);
-      console.log(`Added ${item} to inventory.`);
+      item.owner= this,
+      console.log(`Added ${item.name} to inventory.`);
+      console.log('owner: ', item.owner);
    }
    removeFromInventory(item){
       const itemToRemove= this.inventory.indexOf(item);
@@ -95,6 +115,9 @@ class Character extends CharacterStats {
       this.hp+= item.nutrition;
       console.log(`You have eaten a ${item.name}. `);
       console.log(item.eat);
+      if(item.eatBleedEffect != {}){
+         item.bleedEffect();
+      }
    }
 
    //attack(target)?
@@ -111,7 +134,7 @@ const Scott=  new Character( {
    'race': 'Human',
    'sex': 'Male',
    'class': 'Mage',
-   'stats': {'hp': 100, 'mana': 200},
+   'stats': {'hp': 100, 'mana': 200, 'str': 4, 'stam': 10, 'agil': 7, 'int': 12},
    'inventory': ['Sword', 'Shield', 'Water']
 } );
 
@@ -119,7 +142,8 @@ const Scott=  new Character( {
 const Rock= new Item( {
    name: 'Rock',
    isEdible: false,
-   eat: 'you break several teeth, lose some health, and will continue to bleed and be in pain for a while.',
+   eatBleedEffect: {damage: 2, time: 10}, //90sec
+   eat: 'You break several teeth, lose some health, and will continue to bleed and be in pain for a while.',
    material: 'stone',
    weight: 4,
    color: 'gray & white',
@@ -131,14 +155,17 @@ const Rock= new Item( {
 console.log('rock weight: ',Rock.weight);
 console.log('rock edible?: ',Rock.isEdible);
 
+console.log('Scott picks up a Rock');
+Scott.addToInventory(Rock);
+
 console.log('my health before eating a rock..: ',Scott.hp);
-console.log('eats rock: ',Scott.eatsItem(Rock));
+Scott.eatsItem(Rock);
 console.log('my health now: ',Scott.hp);
 
 // console.log('Scott: ',Scott.inventory);
-// console.log('addToInventory func called: ',Scott.addToInventory(Rock.name));
+// Scott.addToInventory(Rock.name);
 // console.log('new Inven: ', Scott.inventory);
-// // console.log('remove func called: ', Scott.removeFromInventory());
+// Scott.removeFromInventory();
 // console.log('new Inven: ', Scott.inventory);
 
 

@@ -1,5 +1,5 @@
 const introNarratives= {
-   'start' : 'Welcome to my new text based game. I have a lot of work to do still. I hope you enjoy the game.', 
+   'start' : 'Welcome to my new text based game. I have a lot of work to do still. I hope you enjoy the game. If this is David, make sure your console is open bro.. lol', 
    'intro' : "game intro messages go here." 
 }
 
