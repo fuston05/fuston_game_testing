@@ -27,7 +27,7 @@ function gameStart(){
    //set start and intro sequences
    // actionBtn.style.display= 'none';
    actionBtn.textContent= 'Continue';
-   updateDisp(narratives.start);
+   updateDisp(introNarratives.start);
    //remove old click event
    actionBtn.removeEventListener('click', gameStart);
    //update sequence state
@@ -35,7 +35,7 @@ function gameStart(){
 };
 
 const gameState={
-   'curSequence': narratives.start
+   'curSequence': introNarratives.start
 };
 
 const sequenceState={
@@ -53,3 +53,4 @@ function updateDisp(seq){
    disp.textContent= seq;
 
 }//end updateDisp
+

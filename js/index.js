@@ -43,29 +43,32 @@ window.setInterval(() => {
 //just testing how/where we'd need start this//
 class GameRoom{
    constructor(){
-      this.id= '',
+      this.id= '', // this could be the index from the gameRooms array
       this.rmName= '',
       this.availableDirections= [],
-      this.items= [],
+      this.items= [], //items in room. also if player drops item from inventory it'll stay in this room.
       this.sound= '',
-      this.entryDialog= ''
+      this.isLocked= false,
+      this.hasVisited= false,
+      this.entryDialog= '' //any dialog at entry of this room.. for 1st time only?
 
    }//end constructor
+   // METHODS  
+
 }//end class
                   //8 cols
 const gameRooms= [1,1,1,1,1,0,1,1,  //ind: 0-7   //ind 9 is end
    /*5-rows */    1,0,1,0,0,0,1,1,  //8-15       // start at ind: 19
                   1,0,1,0,1,0,1,1,  //16-23
                   1,0,1,0,0,0,0,1,  //24-31      //1's are impassable
-                  1,0,0,0,1,1,1,1]; //32-39
-
-                  /*
-                  if start is #6: index: 5
-                  options: N1,S1,E2,W1
-                  "go N": takes u to #2: index: 1.. 
+                  1,0,0,0,1,1,1,1]; //32-39      //0's are rooms or areas basically
+                  // this array has 16 rooms (14 playable rooms.. 1-start, 1 end room)
+                  
+                  /* movement:
+                  options: N1,S1,E2,W1 
                   so... 
-                  N = index-4, 
-                  S = index +4
+                  N = index-8, 
+                  S = index +8
                   E= index +1, 
                   W= index -1
                   */

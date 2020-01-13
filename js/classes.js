@@ -11,6 +11,38 @@ class GameObject {
    
 }//end gameObject
 
+class Room{
+   constructor(options){
+      this.items= options.items, //array
+      this.areas= options.areas, //array [North, West, South]
+      this.availableDirections= options.availableDirections, //array
+      this.entryDialog= options.entryDialog
+
+
+   }//end constructor
+
+   //METHODS
+
+}//end Room
+
+class Item extends GameObject{
+   constructor(options, magic={}, specialProps={}, inventory=[]){
+      super(options);
+      this.name= options.name,
+      this.isEdible= options.isEdible;
+      this.material= options.material,
+      this.weight= options.weight,
+      this.eat= options.eat,
+      this.value= options.value,
+      this.nutrition= options.nutrition,
+      this.color= options.color,
+      this.inventory= inventory,
+      this.magicProperties= magic, //object
+      this.specialProps= specialProps  //object
+   }//end constructor
+   
+}//end Items
+
 class Inventory extends GameObject{
    constructor(options){
       super(options);
@@ -59,6 +91,11 @@ class Character extends CharacterStats {
       this.inventory.splice(itemToRemove,item.length);
       console.log(`Removed ${item} form inventory and dropped.`);
    }
+   eatsItem(item){
+      this.hp+= item.nutrition;
+      console.log(`You have eaten a ${item.name}. `);
+      console.log(item.eat);
+   }
 
    //attack(target)?
    //searchRoom?
@@ -67,7 +104,6 @@ class Character extends CharacterStats {
    //pickUp(item)?
 
 }//end character
-//stats { health, mana, str, stam, agil, intillect  } probably a separate class??
 
 const Scott=  new Character( {
    'name': 'Scott', 
@@ -79,9 +115,31 @@ const Scott=  new Character( {
    'inventory': ['Sword', 'Shield', 'Water']
 } );
 
-console.log('Scott: ',Scott.inventory);
-console.log('addToInventory func called: ',Scott.addToInventory('Pills'));
-console.log('new Inven: ', Scott.inventory);
-console.log('remove func called: ', Scott.removeFromInventory('pills'));
-console.log('new Inven: ', Scott.inventory);
+//testing out Items: 
+const Rock= new Item( {
+   name: 'Rock',
+   isEdible: false,
+   eat: 'you break several teeth, lose some health, and will continue to bleed and be in pain for a while.',
+   material: 'stone',
+   weight: 4,
+   color: 'gray & white',
+   magicProperties: {},
+   specialProps: {},
+   nutrition: -5,
+} );
+
+console.log('rock weight: ',Rock.weight);
+console.log('rock edible?: ',Rock.isEdible);
+
+console.log('my health before eating a rock..: ',Scott.hp);
+console.log('eats rock: ',Scott.eatsItem(Rock));
+console.log('my health now: ',Scott.hp);
+
+// console.log('Scott: ',Scott.inventory);
+// console.log('addToInventory func called: ',Scott.addToInventory(Rock.name));
+// console.log('new Inven: ', Scott.inventory);
+// // console.log('remove func called: ', Scott.removeFromInventory());
+// console.log('new Inven: ', Scott.inventory);
+
+
 
