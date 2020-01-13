@@ -42,24 +42,28 @@ class Item extends GameObject{
       this.magicProperties= magic, //object
       this.specialProps= specialProps  //object
    }//end constructor
-   bleedEffect(){
+
+   // METHODS
+   bleedEffect(){  // should 'bleed' be here? or on the Character? hmmm
       if(this.eatBleedEffect != {}){
          let hp= this.owner.hp;
+         let bleed= 0;
          let bleedTimer= setInterval(() => {
             
                let dot= hp - (this.eatBleedEffect.damage * this.eatBleedEffect.time);
 
-               console.log('dot: ',dot);
                if(this.owner.hp <= dot){
                   clearInterval(bleedTimer);
-               }
-               this.owner.hp-= this.eatBleedEffect.damage;
-               console.log('Bleeding: ', this.owner.hp);
-
-         }, this.eatBleedEffect.time*100);
-      }
-   }
-}//end Items
+                  console.log('Your health is now: ', this.owner.hp);
+               }else{
+                  this.owner.hp-= this.eatBleedEffect.damage;
+                  bleed= bleed - this.eatBleedEffect.damage;
+                  console.log('Bleeding: ',bleed);
+               }//end if
+         }, 1000); //per second
+      }//end if
+   }//end bleed func
+}//end Items class
 
 class Inventory extends GameObject{
    constructor(options){
