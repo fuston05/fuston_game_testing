@@ -1,23 +1,27 @@
 import React from 'react';
+import {Route} from 'react-router-dom';
+
+//components
+import {SignUpForm} from './Forms/SignUpForm';
+import {LogInForm} from './Forms/LogInForm';
 
 //styles
 import '../sass/Main.scss';
 
 export const Main = () => {
-  return (
-    <div className= 'mainCont'>
-      
-      <h1>Welcome to Fuston Gaming</h1>
-      <form>
-        <label htmlFor=""></label>
-        <input type="text" placeholder= 'Name'/>
-        <input type="text" placeholder= 'Email' />
-        <input type="text" placeholder= 'Password' />
-        <input type="text" placeholder= 'Confirm Password' />
 
-        <button type= 'button'>Let's Play</button>
-      </form>
-      <p>Already have an account? <span><a href= '/'>Log In</a></span></p>
+
+  return (
+    <div className='mainCont'>
+
+    <Route path= '/signup'>
+      <SignUpForm />
+    </Route>
+
+    <Route exact path= '/'>
+      <LogInForm />
+    </Route>
+
     </div>
   )
 }//end main

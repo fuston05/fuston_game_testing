@@ -1,17 +1,19 @@
 // THEME COLORS ******
+$white: #ddd;
 $blue: #A6C8E3;
 $green: #6dff45;
 $orange: #B16B46;
 $transBlack: rgba(0, 0, 0, 0.8);
-$gray: darkGray;
-$darkGray: #666;
-$black: #333;
+$lightGray: #999;
+$gray: #666;
+$darkGray: #333;
+$black: #000;
 
 
 // ********************* FONTS ********************* //
 
 // FONT COLORS *****
-$pColor: $gray;
+$pColor: $white;
 $aColor: $blue;
 
 $h1Color: $green;
@@ -20,18 +22,18 @@ $h3Color: $gray;
 $h4Color: $gray;
 $h5Color: $gray;
 
-$labelColor: $black;
-$inputColor: $darkGray;
-
-
 //  FONT SIZES *****
 $pSize: 1.8rem;
-$pSmall: 1.2rem;
-$aSize: 1.4rem;
-$aSmall: 1.2rem;
+$aSize: 1.8rem;
+$pSmall: 1.6rem;
+$aSmall: 1.6rem;
 
 $h1Size: 4rem;
 $h2Size: 2.5rem;
-$h3Size: 1.8rem;
-$h4Size: 1.4rem;
-$h5Size: 1.4rem;
+$h3Size: 2rem;
+$h4Size: 2rem;
+$h5Size: 2rem;
+
+// ********* INPUT VARS *********
+$labelColor: $black;
+$inputColor: $gray;

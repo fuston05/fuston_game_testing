@@ -1,28 +1,29 @@
-@import './reset.scss';
 @import './vars.scss';
 @import './mix-ins.scss';
 
-.mainCont{
+.mainCont {
   width: 50%;
   @include dFlex(column, flex-start, center);
   margin: 0 auto;
 
-  h1{
-    margin: 1%;
-  }
-
-  form{
+  form {
     width: 100%;
 
-    label{
+    label {}
 
-    }
-
-    input{
+    input {
       width: 100%;
       margin: 0 0 25px 0;
     }
 
   }//end form
 
-}// end mainCont
+  p,span a{
+    font-size: $pSmall;
+  }
+
+  //end form
+
+}
+
+// end mainCont
