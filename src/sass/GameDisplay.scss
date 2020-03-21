@@ -1,0 +1,22 @@
+@import './global/vars.scss';
+@import './global/mix-ins.scss';
+
+ .columnFlex { //control gameDisplay flexing with gameSideBar
+  @include dFlex(column, flex-start, center);
+  width: 70%;
+  height: 80vh;
+  background-color: lightcyan;
+
+  .gameDisplay { // main game play area
+    width: 100%;
+
+    .infoDisplay {
+      @include dFlex(row, center, center);
+      background-color: $lightGray;
+      padding: 2%;
+      font-size: $pSmall;
+      color: $pColor;
+      height: 55px;
+    }//end infoDisplau
+  }//end gameDisplay
+}// columnFlex

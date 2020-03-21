@@ -1,0 +1,14 @@
+@import './global/vars.scss';
+@import './global/mix-ins.scss';
+
+header.header{
+  @include dFlex(row, space-between, center);
+  background-color: $darkGray;
+  padding: 1% 5%;
+  // border-bottom: 1px solid #aaa;
+
+  span.welcome{
+    font-size: $pSize;
+    color: $pColor;
+  }
+}//end header

@@ -7,7 +7,7 @@
   align-items: $align;
 }//end dFlex
 
-@mixin buttonStyles {
+@mixin button {
   width: 100%;
   padding: 8px;
   border-radius: 5px;
@@ -20,3 +20,19 @@
     opacity: 0.8;
   }
 }//end buttonStyles
+
+@mixin gameButton {
+  @include dFlex(column, center, center);
+  width: 23%;
+  height: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #aaa;
+  font-size: $pSmall;
+  z-index: 2;
+
+  &:hover{
+    cursor: pointer;
+    opacity: 0.8;
+  }
+}//end gameButton

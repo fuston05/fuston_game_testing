@@ -1,16 +1,21 @@
 import React from 'react';
 
+
+//libs
 import Particles from 'react-particles-js';
 
 //components
+import {Header} from './components/Header';
 import { Main } from './components/Main';
 
 function App() {
+
   return (
     <div className="App">
+      <Header />  
       <Main />
 
-      <Particles
+      {/* <Particles
         params={{
           "particles": {
             "line_linked": {
@@ -69,7 +74,7 @@ function App() {
           top: 0,
           left: 0
         }}
-      />
+      /> */}
 
     </div>
   );
