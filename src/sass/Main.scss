@@ -1,0 +1,28 @@
+@import './reset.scss';
+@import './vars.scss';
+@import './mix-ins.scss';
+
+.mainCont{
+  width: 50%;
+  @include dFlex(column, flex-start, center);
+  margin: 0 auto;
+
+  h1{
+    margin: 1%;
+  }
+
+  form{
+    width: 100%;
+
+    label{
+
+    }
+
+    input{
+      width: 100%;
+      margin: 0 0 25px 0;
+    }
+
+  }//end form
+
+}// end mainCont
