@@ -1,0 +1,19 @@
+@import './global/vars.scss';
+@import './global/mix-ins.scss';
+
+.gameCont { //main container for GameUi
+  width: 100%;
+  @include dFlex(column, flex-start, center);
+
+  h1.notMobile{
+    display: none;
+  }
+
+  .rowFlex { //control gameSideBar flexing with gameDisplay
+    @include dFlex(row, space-evenly, center);
+    width: 100%;
+    height: 80vh;
+    background-color: lightcoral;
+
+  }//end rowFlex
+}//end gameCont

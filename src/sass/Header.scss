@@ -1,10 +1,9 @@
-@import './vars.scss';
-@import './mix-ins.scss';
+@import './global/vars.scss';
+@import './global/mix-ins.scss';
 
 header.header{
   @include dFlex(row, space-between, center);
   background-color: $darkGray;
-  margin: 0 0 50px 0;
   padding: 1% 5%;
   // border-bottom: 1px solid #aaa;
 

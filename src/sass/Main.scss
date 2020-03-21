@@ -1,15 +1,13 @@
-@import './vars.scss';
-@import './mix-ins.scss';
+@import './global/vars.scss';
+@import './global/mix-ins.scss';
 
 .mainCont {
-  width: 50%;
+  width: 100%;
   @include dFlex(column, flex-start, center);
   margin: 0 auto;
 
   form {
-    width: 100%;
-
-    label {}
+    width: 500%;
 
     input {
       width: 100%;

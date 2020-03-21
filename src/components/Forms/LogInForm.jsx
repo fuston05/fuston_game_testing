@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import {useHistory} from 'react-router-dom';
+import {useHistory, Link} from 'react-router-dom';
 
 export const LogInForm = () => {
-  
+
   //state
   const [formValues, setFormValues] = useState({
     email: '',
@@ -24,7 +24,7 @@ export const LogInForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
     console.log('submit');
-    // history.push('/where?');
+    history.push('/game');
   }//end handleSubmit
 
   return (
@@ -57,7 +57,7 @@ export const LogInForm = () => {
         <button type='submit'>Let's Play!</button>
       </form>
       
-      <p>Don't have an account? <span><a href='/signup'>Sign Up</a></span></p>
+      <p>Don't have an account? <span><Link to='/signup'>Sign Up</Link></span></p>
 
     </div>
   )

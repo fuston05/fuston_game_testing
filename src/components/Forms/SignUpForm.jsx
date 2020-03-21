@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import {useHistory} from 'react-router-dom';
+import {useHistory, Link} from 'react-router-dom';
 
 export const SignUpForm = () => {
-  
+
   //state
   const [formValues, setFormValues] = useState({
     name: '',
@@ -79,7 +79,7 @@ export const SignUpForm = () => {
         <button type='submit'>Let's Do This!</button>
       </form>
       
-      <p>Already have an account? <span><a href='/'>Log In</a></span></p>
+      <p>Already have an account? <span><Link to='/'>Log In</Link></span></p>
 
     </div>
   )
