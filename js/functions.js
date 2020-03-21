@@ -32,7 +32,15 @@ function gameStart(){
    actionBtn.removeEventListener('click', gameStart);
    //update sequence state
    sequenceState.startComplete= true;
+   changeButton(actionBtn);
 };
+
+function changeButton(btn){
+   console.log('button: ',btn);
+   btn.addEventListener('click', (e) => {
+      updateDisp(StartArea.entryDialog);
+   });
+}
 
 const gameState={
    'curSequence': introNarratives.start
@@ -54,3 +62,4 @@ function updateDisp(seq){
 
 }//end updateDisp
 
+//need: fucntion getRoomItems(){} //gets items from room object

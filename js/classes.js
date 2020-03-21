@@ -14,16 +14,17 @@ class GameObject {
 class Room{
    constructor(options){
       this.items= options.items, //array
-      this.areas= options.areas, //array [North, West, South]
-      this.availableDirections= options.availableDirections, //array
-      this.entryDialog= options.entryDialog
-
-
+      this.directions= options.directions, //array [North, West, South]
+      this.entryDialog= options.entryDialog,
+      this.isLocked= options.isLocked,
+      this.hasVisited= false,
+      this.roomSound= options.roomSound
    }//end constructor
 
    //METHODS
 
 }//end Room
+
 
 class Item extends GameObject{
    constructor(options, magic={}, specialProps={}, inventory=[]){
@@ -44,22 +45,22 @@ class Item extends GameObject{
    }//end constructor
 
    // METHODS
-   bleedEffect(){  // should 'bleed' be here? or on the Character? hmmm
+   bleedEffect(){ 
       if(this.eatBleedEffect != {}){
          let hp= this.owner.hp;
          let bleed= 0;
          let bleedTimer= setInterval(() => {
             
-               let dot= hp - (this.eatBleedEffect.damage * this.eatBleedEffect.time);
+            let dot= hp - (this.eatBleedEffect.damage * this.eatBleedEffect.time);
 
-               if(this.owner.hp <= dot){
-                  clearInterval(bleedTimer);
-                  console.log('Your health is now: ', this.owner.hp);
-               }else{
-                  this.owner.hp-= this.eatBleedEffect.damage;
-                  bleed= bleed - this.eatBleedEffect.damage;
-                  console.log('Bleeding: ',bleed);
-               }//end if
+            if(this.owner.hp <= dot){
+               clearInterval(bleedTimer);
+               console.log('Your health is now: ', this.owner.hp);
+            }else{
+               this.owner.hp-= this.eatBleedEffect.damage;
+               bleed= bleed - this.eatBleedEffect.damage;
+               console.log('Bleeding: ',bleed);
+            }//end if
          }, 1000); //per second
       }//end if
    }//end bleed func
@@ -109,12 +110,12 @@ class Character extends CharacterStats {
       item.owner= this,
       console.log(`Added ${item.name} to inventory.`);
       console.log('owner: ', item.owner);
-   }
+   }//end addToInventory
    removeFromInventory(item){
       const itemToRemove= this.inventory.indexOf(item);
       this.inventory.splice(itemToRemove,item.length);
       console.log(`Removed ${item} form inventory and dropped.`);
-   }
+   }//end removeFromInventory
    eatsItem(item){
       this.hp+= item.nutrition;
       console.log(`You have eaten a ${item.name}. `);
@@ -122,8 +123,9 @@ class Character extends CharacterStats {
       if(item.eatBleedEffect != {}){
          item.bleedEffect();
       }
-   }
+   }//end eatsItem
 
+   
    //attack(target)?
    //searchRoom?
    //inspectItem(item)?
@@ -131,6 +133,8 @@ class Character extends CharacterStats {
    //pickUp(item)?
 
 }//end character
+////////////////////////////////////////////
+///////////////////////////////////////////
 
 const Scott=  new Character( {
    'name': 'Scott', 
@@ -143,28 +147,28 @@ const Scott=  new Character( {
 } );
 
 //testing out Items: 
-const Rock= new Item( {
-   name: 'Rock',
-   isEdible: false,
-   eatBleedEffect: {damage: 2, time: 10}, //90sec
-   eat: 'You break several teeth, lose some health, and will continue to bleed and be in pain for a while.',
-   material: 'stone',
-   weight: 4,
-   color: 'gray & white',
-   magicProperties: {},
-   specialProps: {},
-   nutrition: -5,
-} );
+// const Rock= new Item( {
+//    name: 'Rock',
+//    isEdible: false,
+//    eatBleedEffect: {damage: 2, time: 10}, //90sec
+//    eat: 'You break several teeth, lose some health, and will continue to bleed and be in pain for a while.',
+//    material: 'stone',
+//    weight: 4,
+//    color: 'gray & white',
+//    magicProperties: {},
+//    specialProps: {},
+//    nutrition: -5
+// } );
 
-console.log('rock weight: ',Rock.weight);
-console.log('rock edible?: ',Rock.isEdible);
+// console.log('rock weight: ',Rock.weight);
+// console.log('rock edible?: ',Rock.isEdible);
 
-console.log('Scott picks up a Rock');
-Scott.addToInventory(Rock);
+// console.log('Scott picks up a Rock');
+// Scott.addToInventory(Rock);
 
-console.log('my health before eating a rock..: ',Scott.hp);
-Scott.eatsItem(Rock);
-console.log('my health now: ',Scott.hp);
+// console.log('my health before eating a rock..: ',Scott.hp);
+// Scott.eatsItem(Rock);
+// console.log('my health now: ',Scott.hp);
 
 // console.log('Scott: ',Scott.inventory);
 // Scott.addToInventory(Rock.name);

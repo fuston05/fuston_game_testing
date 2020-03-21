@@ -171,10 +171,10 @@ select {
   background-color: lightblue;
   border-radius: 5px;
   outline: none;
-  font-size: 1.8rem;
+  font-size: 1.2rem;
   padding: 1%;
   margin: 1%;
-  width: 200px;
+  width: 150px;
   color: #222;
 }
 .btnClass:hover {
@@ -328,10 +328,10 @@ td {
   background-color: lightblue;
   border-radius: 5px;
   outline: none;
-  font-size: 1.8rem;
+  font-size: 1.2rem;
   padding: 1%;
   margin: 1%;
-  width: 200px;
+  width: 150px;
   color: #222;
 }
 #mainCont .mainControlPanel .buttonCont button:hover {

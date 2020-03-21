@@ -3,7 +3,7 @@ const introNarratives= {
    'intro' : "game intro messages go here." 
 }
 
-const roomNarrratives={
+const roomNarratives={
    'startRoom': 'Narrative about the starting room will go here.',
 
 
